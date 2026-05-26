@@ -382,6 +382,40 @@
 
   .empty-state { color: var(--text-faint); font-size: 12px; padding: 1rem 0; }
 
+  .toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--surface);
+    border: 1px solid var(--green-border);
+    color: var(--green);
+    font-size: 12px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 999;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .toast.error { border-color: rgba(248,113,113,0.35); color: var(--red); }
+
+  .btn-save {
+    width: 100%;
+    margin-top: 8px;
+    padding: 10px;
+    font-size: 12px;
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    font-family: var(--font-mono);
+    cursor: pointer;
+  }
+  .btn-save:hover { border-color: var(--green-border); color: var(--green); }
+
   .retest-row {
     display: flex;
     align-items: center;
@@ -413,6 +447,7 @@
 </style>
 </head>
 <body>
+<div id="toast" class="toast"></div>
 <div class="app-shell">
 
   <header>
@@ -546,12 +581,13 @@
         <p class="card-label" style="margin-top:1rem;">Next session adaptation</p>
         <div class="adapt-box" id="pad">Log this session to see your next workout adjustment.</div>
 
-        <button class="btn-log" onclick="logSess()">✓ Log session</button>
+        <button class="btn-log" onclick="logSess()">✓ Log &amp; save session</button>
+        <button class="btn-save" onclick="forceSave()">↓ Force save to device</button>
       </div>
     </div>
 
     <div class="card" style="margin-top:1rem;">
-      <p class="card-label">Session history</p>
+      <p class="card-label">Session history <span id="save-status" style="font-size:10px;color:var(--text-faint);margin-left:8px;"></span></p>
       <div id="ph"><p class="empty-state">No sessions logged yet.</p></div>
     </div>
   </div>
@@ -650,6 +686,7 @@ function calcFTP(){
   document.getElementById('zc').textContent=cat;
   document.getElementById('zs').textContent='FTP '+S.ftp+'W · factor ×'+TF[S.tm]+(wkg?' · '+wkg+' W/kg':'');
   renderZones();
+  saveState();
   sv('zones');
 }
 
@@ -742,8 +779,36 @@ function logSess(){
   document.getElementById('pn').value='';
   document.getElementById('pad').innerHTML='Log this session to see your adjustment.';
   rRPE();rW();rH();
+  const saved = saveState();
+  if(saved) showToast('✓ Session ' + S.tot + ' logged and saved');
+}
 
-  try{localStorage.setItem('eb_state',JSON.stringify(S));}catch(e){}
+function saveState(){
+  try {
+    const payload = JSON.stringify(S);
+    localStorage.setItem('eb_state', payload);
+    const d = new Date();
+    const ts = d.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+    const el = document.getElementById('save-status');
+    if(el) el.textContent = 'Last saved ' + ts;
+    return true;
+  } catch(e) {
+    showToast('Save failed: ' + (e.message||'localStorage unavailable'), true);
+    return false;
+  }
+}
+
+function forceSave(){
+  const ok = saveState();
+  if(ok) showToast('✓ Session data saved to this device');
+}
+
+function showToast(msg, isError){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast' + (isError ? ' error' : '');
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
 }
 
 function rH(){
@@ -765,9 +830,17 @@ function loadState(){
     const raw=localStorage.getItem('eb_state');
     if(raw){
       S=JSON.parse(raw);
-      if(S.ftp){renderZones();rH();}
+      if(S.ftp){
+        renderZones();
+        rH();
+        const el=document.getElementById('save-status');
+        if(el) el.textContent='Restored from saved data';
+        showToast('✓ Your previous sessions have been restored');
+      }
     }
-  }catch(e){}
+  } catch(e) {
+    showToast('Could not load saved data: ' + (e.message||'unknown error'), true);
+  }
 }
 
 document.getElementById('tg').textContent=TG[5];
@@ -780,5 +853,6 @@ if(S.ftp){
   document.getElementById('zs').textContent='FTP '+S.ftp+'W · factor ×'+TF[S.tm];
 }
 </script>
+</div>
 </body>
 </html>
