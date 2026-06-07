@@ -59,11 +59,7 @@
     gap: 1rem;
   }
 
-  .logo-mark {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
+  .logo-mark { display: flex; align-items: center; gap: 12px; }
 
   .logo-icon {
     width: 40px; height: 40px;
@@ -75,171 +71,77 @@
 
   .logo-icon svg { width: 20px; height: 20px; stroke: var(--green); fill: none; stroke-width: 2; stroke-linecap: round; }
 
-  .logo-text h1 {
-    font-family: var(--font-head);
-    font-size: 1.1rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    color: var(--text);
-  }
-
+  .logo-text h1 { font-family: var(--font-head); font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
   .logo-text p { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
 
   .header-pills { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 
   .pill {
-    font-size: 11px;
-    padding: 4px 10px;
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    color: var(--text-muted);
-    background: var(--surface);
-    font-family: var(--font-mono);
+    font-size: 11px; padding: 4px 10px; border-radius: 20px;
+    border: 1px solid var(--border); color: var(--text-muted);
+    background: var(--surface); font-family: var(--font-mono);
   }
-
   .pill.active { border-color: var(--green-border); color: var(--green); background: var(--green-dim); }
   .pill.amber { border-color: rgba(251,191,36,0.35); color: var(--amber); background: var(--amber-dim); }
 
   .view { display: none; }
   .view.active { display: block; }
 
-  .section-title {
-    font-family: var(--font-head);
-    font-size: 1.5rem;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    margin-bottom: 0.4rem;
-    color: var(--text);
-  }
-
+  .section-title { font-family: var(--font-head); font-size: 1.5rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.4rem; color: var(--text); }
   .section-sub { font-size: 12px; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.7; }
 
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 1.25rem 1.5rem;
-    margin-bottom: 1rem;
-  }
-
-  .card-label {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--text-faint);
-    margin-bottom: 0.75rem;
-  }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+  .card-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-faint); margin-bottom: 0.75rem; }
 
   .btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
 
-  button {
-    font-family: var(--font-mono);
-    cursor: pointer;
-    transition: all 0.15s;
-  }
+  button { font-family: var(--font-mono); cursor: pointer; transition: all 0.15s; }
 
   .btn {
-    background: transparent;
-    border: 1px solid var(--border-strong);
-    border-radius: var(--radius);
-    color: var(--text-muted);
-    font-size: 12px;
-    padding: 8px 16px;
+    background: transparent; border: 1px solid var(--border-strong);
+    border-radius: var(--radius); color: var(--text-muted); font-size: 12px; padding: 8px 16px;
   }
-
   .btn:hover { border-color: var(--green-border); color: var(--green); background: var(--green-dim); }
-
-  .btn.sel {
-    border-color: var(--green-border);
-    color: var(--green);
-    background: var(--green-dim);
-  }
+  .btn.sel { border-color: var(--green-border); color: var(--green); background: var(--green-dim); }
 
   .btn-primary {
-    background: var(--green);
-    color: #000;
-    border: none;
-    border-radius: var(--radius);
-    padding: 12px 24px;
-    font-size: 13px;
-    font-weight: 500;
-    width: 100%;
-    margin-top: 1rem;
-    letter-spacing: 0.02em;
+    background: var(--green); color: #000; border: none; border-radius: var(--radius);
+    padding: 12px 24px; font-size: 13px; font-weight: 500; width: 100%;
+    margin-top: 1rem; letter-spacing: 0.02em;
   }
-
   .btn-primary:hover { background: #6ee7a0; }
   .btn-primary:active { transform: scale(0.99); }
 
   .btn-ghost {
-    background: transparent;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    color: var(--text-muted);
-    font-size: 11px;
-    padding: 6px 12px;
+    background: transparent; border: 1px solid var(--border); border-radius: var(--radius);
+    color: var(--text-muted); font-size: 11px; padding: 6px 12px;
   }
-
   .btn-ghost:hover { border-color: var(--border-strong); color: var(--text); }
 
   input, textarea {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    color: var(--text);
-    font-family: var(--font-mono);
-    font-size: 14px;
-    padding: 10px 14px;
-    width: 100%;
-    outline: none;
-    transition: border-color 0.15s;
+    background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius);
+    color: var(--text); font-family: var(--font-mono); font-size: 14px;
+    padding: 10px 14px; width: 100%; outline: none; transition: border-color 0.15s;
   }
-
   input:focus, textarea:focus { border-color: var(--green-border); }
   input::placeholder, textarea::placeholder { color: var(--text-faint); }
   textarea { resize: none; }
 
-  .input-row {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
-
+  .input-row { display: flex; gap: 10px; align-items: center; }
   .input-unit { font-size: 12px; color: var(--text-muted); white-space: nowrap; }
 
   .guidance-box {
-    background: var(--surface2);
-    border-radius: var(--radius);
-    padding: 1rem;
-    font-size: 12px;
-    color: var(--text-muted);
-    line-height: 1.7;
-    margin-top: 0.75rem;
-    border-left: 2px solid var(--green-border);
+    background: var(--surface2); border-radius: var(--radius); padding: 1rem;
+    font-size: 12px; color: var(--text-muted); line-height: 1.7;
+    margin-top: 0.75rem; border-left: 2px solid var(--green-border);
   }
 
-  .ftp-preview {
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-top: 8px;
-  }
-
+  .ftp-preview { font-size: 11px; color: var(--text-muted); margin-top: 8px; }
   .ftp-preview span { color: var(--green); font-weight: 500; }
 
-  .metrics-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 10px;
-    margin-bottom: 1.5rem;
-  }
+  .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 1.5rem; }
 
-  .metric {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1rem;
-  }
-
+  .metric { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; }
   .metric-label { font-size: 10px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
   .metric-value { font-size: 22px; font-family: var(--font-head); font-weight: 700; color: var(--text); }
   .metric-value.green { color: var(--green); }
@@ -247,202 +149,100 @@
 
   .zones-list { display: flex; flex-direction: column; gap: 2px; }
 
-  .zone-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 8px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 12px;
-  }
-
+  .zone-row { display: flex; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 12px; }
   .zone-row:last-child { border-bottom: none; }
-
   .zone-name { min-width: 175px; color: var(--text-muted); }
   .zone-bar { height: 6px; border-radius: 3px; }
   .zone-watts { min-width: 90px; font-weight: 500; color: var(--text); }
   .zone-pct { color: var(--text-faint); font-size: 11px; }
 
-  .two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    margin-bottom: 1rem;
-  }
-
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 1rem; }
   @media (max-width: 580px) { .two-col { grid-template-columns: 1fr; } }
 
   .workout-block {
-    border-left: 3px solid var(--green);
-    padding: 12px 14px;
-    background: var(--surface2);
-    border-radius: 0 var(--radius) var(--radius) 0;
-    margin-bottom: 12px;
+    border-left: 3px solid var(--green); padding: 12px 14px;
+    background: var(--surface2); border-radius: 0 var(--radius) var(--radius) 0; margin-bottom: 12px;
   }
-
   .workout-type { font-size: 14px; font-weight: 500; font-family: var(--font-head); color: var(--text); margin-bottom: 4px; }
   .workout-desc { font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
   .workout-duration { font-size: 11px; color: var(--text-faint); margin-bottom: 2px; }
   .workout-target { font-size: 12px; color: var(--green); }
 
-  .rpe-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 6px;
-  }
+  .rpe-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
 
   .rpe-btn {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    color: var(--text-muted);
-    font-size: 13px;
-    padding: 8px 0;
-    font-family: var(--font-mono);
+    background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius);
+    color: var(--text-muted); font-size: 13px; padding: 8px 0; font-family: var(--font-mono);
   }
-
   .rpe-btn:hover { border-color: var(--green-border); color: var(--green); }
   .rpe-btn.sel { border-color: var(--green-border); color: var(--green); background: var(--green-dim); }
 
-  .adapt-box {
-    background: var(--surface2);
-    border-radius: var(--radius);
-    padding: 12px;
-    font-size: 12px;
-    color: var(--text-muted);
-    min-height: 70px;
-    line-height: 1.7;
-  }
+  .adapt-box { background: var(--surface2); border-radius: var(--radius); padding: 12px; font-size: 12px; color: var(--text-muted); min-height: 70px; line-height: 1.7; }
 
-  .adapt-tag {
-    display: inline-block;
-    font-size: 10px;
-    padding: 2px 8px;
-    border-radius: 20px;
-    margin-bottom: 6px;
-    font-weight: 500;
-  }
-
+  .adapt-tag { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 20px; margin-bottom: 6px; font-weight: 500; }
   .tag-up { background: var(--green-dim); color: var(--green); border: 1px solid var(--green-border); }
   .tag-dn { background: var(--red-dim); color: var(--red); border: 1px solid rgba(248,113,113,0.3); }
   .tag-ok { background: var(--surface); color: var(--text-muted); border: 1px solid var(--border); }
 
   .btn-log {
-    width: 100%;
-    margin-top: 1rem;
-    padding: 11px;
-    font-size: 13px;
-    font-weight: 500;
-    background: var(--green);
-    color: #000;
-    border: none;
-    border-radius: var(--radius);
-    font-family: var(--font-mono);
-    letter-spacing: 0.02em;
+    width: 100%; margin-top: 1rem; padding: 11px; font-size: 13px; font-weight: 500;
+    background: var(--green); color: #000; border: none; border-radius: var(--radius);
+    font-family: var(--font-mono); letter-spacing: 0.02em;
   }
-
   .btn-log:hover { background: #6ee7a0; }
 
-  .history-item {
-    display: flex;
-    gap: 12px;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border);
-    align-items: flex-start;
-  }
-
+  .history-item { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
   .history-item:last-child { border-bottom: none; }
 
   .hist-num {
-    min-width: 28px; height: 28px;
-    background: var(--surface2);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 11px; color: var(--text-faint);
+    min-width: 28px; height: 28px; background: var(--surface2); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--text-faint);
   }
 
   .hist-workout { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 2px; }
   .hist-meta { font-size: 11px; color: var(--text-muted); margin-bottom: 2px; }
   .hist-adapt { font-size: 11px; color: var(--green); }
 
-  .phase-bar {
-    height: 3px;
-    background: var(--border);
-    border-radius: 2px;
-    margin-bottom: 2rem;
-    overflow: hidden;
-  }
-
-  .phase-bar-fill {
-    height: 100%;
-    background: var(--green);
-    border-radius: 2px;
-    transition: width 0.4s ease;
-  }
+  .phase-bar { height: 3px; background: var(--border); border-radius: 2px; margin-bottom: 2rem; overflow: hidden; }
+  .phase-bar-fill { height: 100%; background: var(--green); border-radius: 2px; transition: width 0.4s ease; }
 
   .empty-state { color: var(--text-faint); font-size: 12px; padding: 1rem 0; }
 
   .toast {
-    position: fixed;
-    bottom: 2rem;
-    left: 50%;
+    position: fixed; bottom: 2rem; left: 50%;
     transform: translateX(-50%) translateY(20px);
-    background: var(--surface);
-    border: 1px solid var(--green-border);
-    color: var(--green);
-    font-size: 12px;
-    padding: 10px 20px;
-    border-radius: 20px;
-    opacity: 0;
-    transition: opacity 0.2s, transform 0.2s;
-    pointer-events: none;
-    white-space: nowrap;
-    z-index: 999;
+    background: var(--surface); border: 1px solid var(--green-border);
+    color: var(--green); font-size: 12px; padding: 10px 20px; border-radius: 20px;
+    opacity: 0; transition: opacity 0.2s, transform 0.2s;
+    pointer-events: none; white-space: nowrap; z-index: 999;
   }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
   .toast.error { border-color: rgba(248,113,113,0.35); color: var(--red); }
 
   .btn-save {
-    width: 100%;
-    margin-top: 8px;
-    padding: 10px;
-    font-size: 12px;
-    background: transparent;
-    color: var(--text-muted);
-    border: 1px solid var(--border-strong);
-    border-radius: var(--radius);
-    font-family: var(--font-mono);
-    cursor: pointer;
+    width: 100%; margin-top: 8px; padding: 10px; font-size: 12px;
+    background: transparent; color: var(--text-muted);
+    border: 1px solid var(--border-strong); border-radius: var(--radius);
+    font-family: var(--font-mono); cursor: pointer;
   }
   .btn-save:hover { border-color: var(--green-border); color: var(--green); }
 
   .retest-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1.5rem;
-    flex-wrap: wrap;
-    gap: 10px;
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 1.5rem; flex-wrap: wrap; gap: 10px;
   }
 
-  .cat-badge {
-    display: inline-block;
-    font-size: 10px;
-    padding: 3px 10px;
-    border-radius: 20px;
-    border: 1px solid rgba(251,191,36,0.35);
-    color: var(--amber);
-    background: var(--amber-dim);
+  .hist-show-all {
+    width: 100%; margin-top: 10px; padding: 8px; font-size: 11px;
+    background: transparent; color: var(--text-muted);
+    border: 1px solid var(--border); border-radius: var(--radius);
+    font-family: var(--font-mono); cursor: pointer; text-align: center;
   }
+  .hist-show-all:hover { border-color: var(--border-strong); color: var(--text); }
 
   .footer {
-    margin-top: 3rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--border);
-    font-size: 10px;
-    color: var(--text-faint);
-    text-align: center;
-    line-height: 1.8;
+    margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border);
+    font-size: 10px; color: var(--text-faint); text-align: center; line-height: 1.8;
   }
 </style>
 </head>
@@ -564,9 +364,9 @@
           <button class="btn" onclick="selEq(this,'ski')">Ski</button>
         </div>
 
-        <p class="card-label">Watts achieved</p>
+        <p class="card-label">Watts achieved (work intervals avg)</p>
         <div class="input-row" style="margin-bottom:1rem;">
-          <input type="number" id="pwa" placeholder="avg watts this session" oninput="updA()"/>
+          <input type="number" id="pwa" placeholder="avg watts during work sets" oninput="updA()"/>
           <span class="input-unit">W</span>
         </div>
 
@@ -642,6 +442,7 @@ const PH=[
 ];
 
 let S={tm:5,ftp:null,wt:null,rpe:null,eq:'bike',sess:[],tot:0,ph:0,wk:1};
+let histShowAll=false;
 
 function sv(v){
   document.querySelectorAll('.view').forEach(el=>el.classList.remove('active'));
@@ -650,7 +451,7 @@ function sv(v){
     const hp=document.getElementById('hp-'+x);
     if(hp) hp.className='pill'+(x===v?' active':'');
   });
-  if(v==='program'){rRPE();rW();}
+  if(v==='program'){rRPE();rW();rH();updateProgMetrics();}
 }
 
 function selTest(el,m){
@@ -677,6 +478,12 @@ function calcFTP(){
   if(!w||w<50){alert('Please enter your average watts from the test.');return;}
   S.ftp=Math.round(w*TF[S.tm]);
   S.wt=parseFloat(document.getElementById('bw').value)||null;
+  saveState();
+  populateZones();
+  sv('zones');
+}
+
+function populateZones(){
   const wkg=S.wt?(S.ftp/S.wt).toFixed(2):null;
   let cat='—';
   if(wkg){const n=parseFloat(wkg);for(let i=CL.length-1;i>=0;i--){if(n>=CL[i][0]){cat=CL[i][1];break;}}}
@@ -686,8 +493,6 @@ function calcFTP(){
   document.getElementById('zc').textContent=cat;
   document.getElementById('zs').textContent='FTP '+S.ftp+'W · factor ×'+TF[S.tm]+(wkg?' · '+wkg+' W/kg':'');
   renderZones();
-  saveState();
-  sv('zones');
 }
 
 function renderZones(){
@@ -747,27 +552,14 @@ function updA(){
   document.getElementById('pad').innerHTML=tag+'<p style="margin:6px 0 0;color:var(--text-muted);">'+msg+'</p>';
 }
 
-function logSess(){
-  if(!S.rpe){alert('Please select an RPE before logging.');return;}
-  const watts=document.getElementById('pwa').value||'—';
-  const notes=document.getElementById('pn').value||'';
-  const ph=PH[S.ph],idx=S.tot%ph.wo.length,w=ph.wo[idx];
-  const adapt=document.getElementById('pad').innerText.replace(/[↑↓→]/g,'').trim();
-  S.sess.unshift({n:S.tot+1,wt:w.t,rpe:S.rpe,watts,eq:S.eq,notes,adapt,phase:ph.n});
-  S.tot++;S.rpe=null;
-
-  if(S.tot>0&&S.tot%ph.wo.length===0){
-    S.wk++;
-    if(S.wk>ph.wks){S.ph=Math.min(S.ph+1,PH.length-1);S.wk=1;}
-  }
-
+function updateProgMetrics(){
+  if(!S.sess.length) return;
   const ar=S.sess.map(x=>x.rpe);
   const avg=(ar.reduce((a,b)=>a+b,0)/ar.length).toFixed(1);
   const l2=S.sess.slice(0,2).map(x=>parseFloat(x.watts)).filter(v=>!isNaN(v));
   const tr=l2.length===2?(l2[0]>l2[1]?'↑ higher':l2[0]<l2[1]?'↓ lower':'→ same'):'—';
   const curPh=PH[S.ph];
   const pct=Math.min(Math.round((S.tot%(curPh.wks*curPh.wo.length)||curPh.wks*curPh.wo.length)/(curPh.wks*curPh.wo.length)*100),100);
-
   document.getElementById('ps').textContent=S.tot;
   document.getElementById('pr').textContent=avg;
   document.getElementById('pt').textContent=tr;
@@ -775,84 +567,117 @@ function logSess(){
   document.getElementById('phase-bar').style.width=pct+'%';
   document.getElementById('prog-phase').textContent=curPh.n;
   document.getElementById('prog-week').textContent='Week '+S.wk;
+}
+
+function logSess(){
+  if(!S.rpe){alert('Please select an RPE before logging.');return;}
+  const watts=document.getElementById('pwa').value||'—';
+  const notes=document.getElementById('pn').value||'';
+  const ph=PH[S.ph],idx=S.tot%ph.wo.length,w=ph.wo[idx];
+  const adapt=document.getElementById('pad').innerText.replace(/[↑↓→]/g,'').trim();
+  S.sess.unshift({n:S.tot+1,wt:w.t,rpe:S.rpe,watts,eq:S.eq,notes,adapt,phase:ph.n,date:new Date().toLocaleDateString()});
+  S.tot++;
+  S.rpe=null;
+
+  if(S.tot>0&&S.tot%ph.wo.length===0){
+    S.wk++;
+    if(S.wk>ph.wks){S.ph=Math.min(S.ph+1,PH.length-1);S.wk=1;}
+  }
+
+  updateProgMetrics();
   document.getElementById('pwa').value='';
   document.getElementById('pn').value='';
   document.getElementById('pad').innerHTML='Log this session to see your adjustment.';
   rRPE();rW();rH();
-  const saved = saveState();
-  if(saved) showToast('✓ Session ' + S.tot + ' logged and saved');
+  const saved=saveState();
+  if(saved) showToast('✓ Session '+S.tot+' logged and saved');
 }
 
 function saveState(){
   try {
-    const payload = JSON.stringify(S);
-    localStorage.setItem('eb_state', payload);
-    const d = new Date();
-    const ts = d.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
-    const el = document.getElementById('save-status');
-    if(el) el.textContent = 'Last saved ' + ts;
+    localStorage.setItem('eb_state',JSON.stringify(S));
+    const ts=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+    const el=document.getElementById('save-status');
+    if(el) el.textContent='Last saved '+ts;
     return true;
   } catch(e) {
-    showToast('Save failed: ' + (e.message||'localStorage unavailable'), true);
+    showToast('Save failed: '+(e.message||'localStorage unavailable'),true);
     return false;
   }
 }
 
 function forceSave(){
-  const ok = saveState();
+  const ok=saveState();
   if(ok) showToast('✓ Session data saved to this device');
 }
 
-function showToast(msg, isError){
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = 'toast' + (isError ? ' error' : '');
+function showToast(msg,isError){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.className='toast'+(isError?' error':'');
   t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2800);
+  setTimeout(()=>t.classList.remove('show'),2800);
 }
 
 function rH(){
   const el=document.getElementById('ph');
   if(!S.sess.length){el.innerHTML='<p class="empty-state">No sessions logged yet.</p>';return;}
-  el.innerHTML=S.sess.slice(0,8).map(s=>`
+  // FIX: show all sessions, not just 8
+  const toShow=histShowAll?S.sess:S.sess.slice(0,8);
+  el.innerHTML=toShow.map(s=>`
     <div class="history-item">
       <div class="hist-num">${s.n}</div>
       <div style="flex:1;min-width:0;">
-        <p class="hist-workout">${s.wt} <span style="font-weight:400;color:var(--text-muted);">— ${s.eq}</span></p>
+        <p class="hist-workout">${s.wt} <span style="font-weight:400;color:var(--text-muted);">— ${s.eq}${s.date?' · '+s.date:''}</span></p>
         <p class="hist-meta">RPE ${s.rpe} · ${s.watts}W${s.notes?' · '+s.notes.slice(0,45):''}</p>
         <p class="hist-adapt">${s.adapt.slice(0,100)}…</p>
       </div>
     </div>`).join('');
+  if(S.sess.length>8){
+    const btn=document.createElement('button');
+    btn.className='hist-show-all';
+    btn.textContent=histShowAll?'Show recent only ↑':'Show all '+S.sess.length+' sessions ↓';
+    btn.onclick=()=>{histShowAll=!histShowAll;rH();};
+    el.appendChild(btn);
+  }
 }
 
 function loadState(){
   try{
     const raw=localStorage.getItem('eb_state');
-    if(raw){
-      S=JSON.parse(raw);
-      if(S.ftp){
-        renderZones();
-        rH();
-        const el=document.getElementById('save-status');
-        if(el) el.textContent='Restored from saved data';
-        showToast('✓ Your previous sessions have been restored');
-      }
-    }
+    if(!raw) return false;
+    const parsed=JSON.parse(raw);
+    // Validate it's a real saved state with FTP
+    if(!parsed||typeof parsed.ftp!=='number') return false;
+    S=parsed;
+    return true;
   } catch(e) {
-    showToast('Could not load saved data: ' + (e.message||'unknown error'), true);
+    showToast('Could not load saved data: '+(e.message||'unknown error'),true);
+    return false;
   }
 }
 
+// ── BOOT SEQUENCE ──────────────────────────────────────────────
 document.getElementById('tg').textContent=TG[5];
-loadState();
-if(S.ftp){
-  document.getElementById('zf').textContent=S.ftp+'W';
-  const wkg=S.wt?(S.ftp/S.wt).toFixed(2):null;
-  document.getElementById('zw').textContent=wkg?wkg+' W/kg':'—';
-  document.getElementById('zt').textContent=S.tm+'-min test';
-  document.getElementById('zs').textContent='FTP '+S.ftp+'W · factor ×'+TF[S.tm];
+
+const restored=loadState();
+
+if(restored && S.ftp){
+  // Restore zones display
+  populateZones();
+  // Restore program metrics and history
+  updateProgMetrics();
+  rH();
+  // Skip straight to program view — don't show baseline again
+  sv('program');
+  const el=document.getElementById('save-status');
+  if(el) el.textContent='Restored · '+S.sess.length+' sessions';
+  showToast('✓ Welcome back — '+S.sess.length+' session'+(S.sess.length!==1?'s':'')+' restored');
+} else {
+  // Fresh start — show baseline
+  sv('baseline');
 }
 </script>
 </div>
 </body>
-</html>
+          </html>
