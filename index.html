@@ -200,6 +200,7 @@
   }
 
   .hist-workout { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 2px; }
+  .hist-detail { font-size: 11px; color: var(--text-faint); margin-bottom: 2px; }
   .hist-meta { font-size: 11px; color: var(--text-muted); margin-bottom: 2px; }
   .hist-adapt { font-size: 11px; color: var(--green); }
 
@@ -239,6 +240,15 @@
     font-family: var(--font-mono); cursor: pointer; text-align: center;
   }
   .hist-show-all:hover { border-color: var(--border-strong); color: var(--text); }
+
+  .hist-export {
+    width: 100%; margin-top: 6px; padding: 8px; font-size: 11px;
+    background: transparent; color: var(--text-muted);
+    border: 1px solid var(--border); border-radius: var(--radius);
+    font-family: var(--font-mono); cursor: pointer; text-align: center;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+  }
+  .hist-export:hover { border-color: rgba(96,165,250,0.4); color: var(--blue); background: var(--blue-dim); }
 
   .footer {
     margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border);
@@ -575,7 +585,23 @@ function logSess(){
   const notes=document.getElementById('pn').value||'';
   const ph=PH[S.ph],idx=S.tot%ph.wo.length,w=ph.wo[idx];
   const adapt=document.getElementById('pad').innerText.replace(/[↑↓→]/g,'').trim();
-  S.sess.unshift({n:S.tot+1,wt:w.t,rpe:S.rpe,watts,eq:S.eq,notes,adapt,phase:ph.n,date:new Date().toLocaleDateString()});
+  // Capture duration and target watts at log time
+  const tLo=S.ftp?Math.round(S.ftp*w.z[0]):'—';
+  const tHi=S.ftp?Math.round(S.ftp*w.z[1]):'—';
+  S.sess.unshift({
+    n:S.tot+1,
+    wt:w.t,
+    dur:w.d,
+    tLo,
+    tHi,
+    rpe:S.rpe,
+    watts,
+    eq:S.eq,
+    notes,
+    adapt,
+    phase:ph.n,
+    date:new Date().toLocaleDateString()
+  });
   S.tot++;
   S.rpe=null;
 
@@ -619,20 +645,52 @@ function showToast(msg,isError){
   setTimeout(()=>t.classList.remove('show'),2800);
 }
 
+function exportCSV(){
+  if(!S.sess.length){showToast('No sessions to export yet',true);return;}
+  const headers=['Session','Date','Phase','Workout','Duration','Target Low (W)','Target High (W)','Equipment','Watts Achieved','RPE','Adaptation','Notes'];
+  const rows=S.sess.slice().reverse().map(s=>[
+    s.n,
+    s.date||'',
+    s.phase||'',
+    s.wt||'',
+    s.dur||'',
+    s.tLo||'',
+    s.tHi||'',
+    s.eq||'',
+    s.watts||'',
+    s.rpe||'',
+    (s.adapt||'').replace(/,/g,';'),
+    (s.notes||'').replace(/,/g,';').replace(/\n/g,' ')
+  ]);
+  const csv=[headers,...rows].map(r=>r.map(v=>`"${v}"`).join(',')).join('\n');
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download='engine-builder-history.csv';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showToast('✓ CSV exported — open in Excel or Sheets');
+}
+
 function rH(){
   const el=document.getElementById('ph');
   if(!S.sess.length){el.innerHTML='<p class="empty-state">No sessions logged yet.</p>';return;}
-  // FIX: show all sessions, not just 8
   const toShow=histShowAll?S.sess:S.sess.slice(0,8);
   el.innerHTML=toShow.map(s=>`
     <div class="history-item">
       <div class="hist-num">${s.n}</div>
       <div style="flex:1;min-width:0;">
         <p class="hist-workout">${s.wt} <span style="font-weight:400;color:var(--text-muted);">— ${s.eq}${s.date?' · '+s.date:''}</span></p>
-        <p class="hist-meta">RPE ${s.rpe} · ${s.watts}W${s.notes?' · '+s.notes.slice(0,45):''}</p>
+        <p class="hist-detail">${s.dur||''} · target ${s.tLo&&s.tHi?s.tLo+'–'+s.tHi+'W':''}</p>
+        <p class="hist-meta">RPE ${s.rpe} · ${s.watts}W achieved${s.notes?' · '+s.notes.slice(0,45):''}</p>
         <p class="hist-adapt">${s.adapt.slice(0,100)}…</p>
       </div>
     </div>`).join('');
+
+  // Show all / collapse button
   if(S.sess.length>8){
     const btn=document.createElement('button');
     btn.className='hist-show-all';
@@ -640,6 +698,13 @@ function rH(){
     btn.onclick=()=>{histShowAll=!histShowAll;rH();};
     el.appendChild(btn);
   }
+
+  // Export button — always shown when there are sessions
+  const exp=document.createElement('button');
+  exp.className='hist-export';
+  exp.innerHTML='↓ Export history as CSV &nbsp;·&nbsp; open in Excel or Google Sheets';
+  exp.onclick=exportCSV;
+  el.appendChild(exp);
 }
 
 function loadState(){
@@ -647,7 +712,6 @@ function loadState(){
     const raw=localStorage.getItem('eb_state');
     if(!raw) return false;
     const parsed=JSON.parse(raw);
-    // Validate it's a real saved state with FTP
     if(!parsed||typeof parsed.ftp!=='number') return false;
     S=parsed;
     return true;
@@ -663,21 +727,17 @@ document.getElementById('tg').textContent=TG[5];
 const restored=loadState();
 
 if(restored && S.ftp){
-  // Restore zones display
   populateZones();
-  // Restore program metrics and history
   updateProgMetrics();
   rH();
-  // Skip straight to program view — don't show baseline again
   sv('program');
   const el=document.getElementById('save-status');
   if(el) el.textContent='Restored · '+S.sess.length+' sessions';
   showToast('✓ Welcome back — '+S.sess.length+' session'+(S.sess.length!==1?'s':'')+' restored');
 } else {
-  // Fresh start — show baseline
   sv('baseline');
 }
 </script>
 </div>
 </body>
-          </html>
+</html>
